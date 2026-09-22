@@ -18,3 +18,12 @@ Tests: There were 3 tests and all test were passed successfully
 Conclusion:
 
 I set up my first reproducible Conda environment and practiced Git branch and merge workflow.The NumPy implementation was way faster than the normal Python loop. All three pytest tests passed successfully.
+
+
+
+
+## PW1 Lab B
+
+- **What the data showed:** The dataset represents a decay process over time, showing counts decreasing steadily.
+- **Observed vs Analytical:** The observed data points matched the smooth analytical decay curve (\(N_0 e^{-\lambda t}\) with \(\lambda = 0.3\)) very well.
+- **Snakemake pipeline:** The Snakemake pipeline automates the workflow by running `plot.py` to generate `figure.png` from `decay_observed.csv` only when inputs change.
