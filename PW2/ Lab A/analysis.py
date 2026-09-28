@@ -74,3 +74,62 @@ ax3.legend()
 plt.tight_layout()
 plt.savefig('motion.png')
 print("Graphs saved as 'motion.png'")
+
+
+
+
+
+
+
+#BONUS TASK: 2D Trajectory Analysis 
+
+
+# 1. Read trajectory.csv (columns: time, x, y)
+
+
+
+traj_data = np.loadtxt('trajectory.csv', delimiter=',', skiprows=1)
+t_2d = traj_data[:, 0]
+x = traj_data[:, 1]
+y_2d = traj_data[:, 2]
+
+# 2. Compute velocity in x and y directions using np.gradient
+
+
+vx = np.gradient(x, t_2d)
+
+vy = np.gradient(y_2d, t_2d)
+
+# Compute overall speed sqrt(vx^2 + vy^2)
+
+
+speed = np.sqrt(vx**2 + vy**2)
+
+# 3. Plot the 2D path (x vs y) and speed over time
+
+
+fig_bonus, (ax_path, ax_speed) = plt.subplots(1, 2, figsize=(12, 5))
+
+# Path plot (x vs y)
+
+
+ax_path.plot(x, y_2d, label='2D Path', color='purple')
+ax_path.set_xlabel('X Position (m)')
+ax_path.set_ylabel('Y Position (m)')
+ax_path.set_title('Object Trajectory (X vs Y)')
+ax_path.grid(True)
+ax_path.legend()
+
+# Speed plot
+
+
+ax_speed.plot(t_2d, speed, label='Speed', color='green')
+ax_speed.set_xlabel('Time (s)')
+ax_speed.set_ylabel('Speed (m/s)')
+ax_speed.set_title('Speed over Time')
+ax_speed.grid(True)
+ax_speed.legend()
+
+plt.tight_layout()
+plt.savefig('trajectory.png')
+print("trajectory.png successfully created!")
